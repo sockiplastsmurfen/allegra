@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+		<meta name="robots" content="noindex, nofollow" />
+
+		<title>jQuery.mmenu &raquo; Fixed header</title>
+
+		<link type="text/css" rel="stylesheet" href="examples.css" />
+		<link type="text/css" rel="stylesheet" href="../mmenu.css" />
+		
+		<style type="text/css">
+			#page
+			{
+				padding-top: 40px;
+			}
+			#menu
+			{
+				padding-top: 30px;
+			}
+			#header
+			{
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			#mmenu-blocker
+			{
+				opacity: 0;
+			}
+		</style>
+		
+		<script type="text/javascript" language="javascript" src="../jquery.js"></script>
+		<script type="text/javascript" src="../jquery.mmenu.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+				Fixed header
+			</div>
+			<div id="content">
+				<p>This is a demo page.<br />
+					Click the menu-button in the header to open the menu.</p>
+
+				<p>The header of this page (the grey bar with the title and the menu-button) is fixed. This way it will stay on top of the page and the menu.</p>
+			</div>
+			<nav id="menu">
+				<ul>
+					<li><a href="basic.html">Basic example</a></li>
+					<li><a href="horizontal-submenus.html">Horizontal sliding submenus example</a></li>
+					<li><a href="vertical-submenus.html">Vertical submenus example</a></li>
+					<li class="Selected"><a href="fixedheader.html">Fixed header</a></li>
+					<li><a href="advanced.html">Advanced example</a></li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>

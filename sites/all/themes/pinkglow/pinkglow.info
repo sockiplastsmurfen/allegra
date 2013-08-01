@@ -1,0 +1,19 @@
+name = Pinkglow
+description = Simple Clean Subtheme
+core = 7.x
+engine = phptemplate
+base theme = simpleclean
+
+; STYLESHEETS
+stylesheets[all][] = custom.css
+
+; REGIONS
+regions[content] = Content
+regions[header] = Header
+regions[menu] = Menu
+regions[highlighted] = Highlighted
+regions[sidebar_first] = Right sidebar
+regions[footer] = Footer
+regions[help] = Help
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom

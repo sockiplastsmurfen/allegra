@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+		<meta name="robots" content="noindex, nofollow" />
+
+		<title>jQuery.mmenu &raquo; Advanced example</title>
+
+		<link type="text/css" rel="stylesheet" href="examples.css" />
+		<link type="text/css" rel="stylesheet" href="../mmenu.css" />
+		<style type="text/css" media="all">
+
+			.mmenu div.search
+			{
+				background: #222;
+				border-bottom: 1px solid #444;
+				width: 100%;
+				padding: 5px 75px 5px 10px !important;
+				position: fixed;
+				top: 0;
+				z-index: 1;
+				
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			@media all and (min-width: 500px) {
+				.mmenu div.search
+				{
+					width: 500px;
+				}
+			}
+			html.mmenu-right .mmenu div.search
+			{
+				padding: 5px 10px 5px 75px !important;
+			}
+			.mmenu div.search input
+			{
+				background: #555;
+				border: none;
+				border-radius: 20px;
+				line-height: 30px;
+				color: #fff;
+				display: block;
+				width: 100%;
+				height: 30px;
+				margin: 5px 0;
+				padding: 0 0 0 10px;
+				
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			.mmenu div.search ~ ul
+			{
+				padding-top: 50px;
+			}
+			
+			.mmenu li.no-results
+			{
+				border: none;
+				font-style: italic;
+				color: #666;
+				display: none;
+			}
+		</style>
+
+		<script type="text/javascript" language="javascript" src="../jquery.js"></script>
+		<script type="text/javascript" src="../jquery.mmenu.js"></script>
+		<script type="text/javascript">
+
+			//	The menu on the left
+			$(function() {
+
+				var $menu = $('nav#menu-left');
+
+				$menu.mmenu();
+
+				//	Search left menu (single level)
+				var $input = $menu.find( 'div.search input' );
+				var $items = $menu.find( 'li' ).not( '.no-results' );
+				var $noresults = $menu.find( 'li.no-results' );
+
+				$input.bind(
+					'keyup.search',
+					function()
+					{
+						var search = $(this).val().toLowerCase();
+						$items.show().each(
+							function()
+							{
+								if ( $(this).text().toLowerCase().indexOf( search ) == -1 )
+								{
+									$(this).hide();
+								}	
+							}
+						);
+						$noresults[ $items.filter( ':visible' ).length ? 'hide' : 'show' ]();
+					}
+				);
+			});
+
+
+			//	The menu on the right
+			$(function() {
+
+				var $menu = $('nav#menu-right');
+
+				$menu.mmenu({
+					position: 'right',
+					addCounters: true
+				});
+
+				//	Search right menu (multiple levels)
+				var $input = $menu.find( 'div.search input' );
+				var $items = $menu.find( '.mmenu-submenu li' ).not( '.mmenu-subtitle' ).not( '.mmenu-label' ).not( '.no-results' );
+				var $labels = $menu.find( 'li.mmenu-label' );
+				var $noresults = $menu.find( 'li.no-results' );
+				var $counters = $menu.find( 'em.mmenu-counter' );
+
+				$counters.bind(
+					'count.mmenu',
+					function()
+					{
+						var $t = $(this);
+						$t.parent()[ $t.text() == 0 ? 'hide' : 'show' ]();
+					}
+				);
+
+				$input.bind(
+					'keyup.search',
+					function()
+					{
+						$labels.hide();
+						var search = $(this).val().toLowerCase();
+						$items.each(
+							function()
+							{
+								var $t = $(this).removeClass( 'mmenu-hidden' );
+								if ( $t.text().toLowerCase().indexOf( search ) == -1 )
+								{
+									$t.addClass( 'mmenu-hidden' );
+								}
+								else
+								{
+									$t.prevAll( '.mmenu-label' ).first().show();
+								}
+							}
+						);
+						$counters.trigger( 'count.mmenu' );
+						$noresults[ !$items.not( '.mmenu-hidden' ).length ? 'show' : 'hide' ]();
+					}
+				);
+
+				//	Click a menu-item
+				var $confirm = $('#confirmation');
+				$('#menu-right a').not( '.mmenu-subopen' ).not( '.mmenu-subclose' ).bind(
+					'click.example',
+					function( e )
+					{
+						e.preventDefault();
+						$confirm.show().text( 'You clicked "' + $(this).text() + '"' );
+						$('#menu-right').trigger( 'close' );
+					}
+				);
+			});
+		</script>
+	</head>
+	<body>
+		<div id="page">
+			<div id="header">
+				<a href="#menu-left"></a>
+				This is a demo page
+				<a href="#menu-right" class="friends right"></a>
+			</div>
+			<div id="content">
+				<p id="confirmation"></p>
+				<h4>Sliding menus for your website</h4>
+				<p>Create an unlimited amount of app look-alike sliding menus, all with an unlimited amount of submenus.</p>
+				<h4>Try it!</h4>
+				<p>Click the menu-button in the header to open the menu on the left. Or click the friends-button in the header to open a second menu on the right.</p>
+				<h4>Search</h4>
+				<p>Both menus have a search field prepended to them, so go ahead and try typing something in the search fields.</p>
+			</div>
+			<nav id="menu-left">
+				<div class="search">
+					<input type="text" name="search" placeholder="Search" autocomplete="off" />
+				</div>
+				<ul>
+					<li><a href="basic.html">Basic example</a></li>
+					<li><a href="horizontal-submenus.html">Horizontal sliding submenus example</a></li>
+					<li><a href="vertical-submenus.html">Vertical submenus example</a></li>
+					<li><a href="fixedheader.html">Fixed header</a></li>
+					<li class="Selected"><a href="advanced.html">Advanced example</a></li>
+
+					<li class="no-results"><span>No results found.</span></li>
+				</ul>
+			</nav>
+			<nav id="menu-right">
+				<div class="search">
+					<input type="text" name="search" placeholder="Search" autocomplete="off" />
+				</div>
+				<ul>
+					<li>
+						<span>Friends <i></i></span>
+						<ul>
+							<li class="Label">A</li>
+							<li><a href="#">Alexa</a></li>
+							<li><a href="#">Alexander</a></li>
+
+							<li class="Label">F</li>
+							<li><a href="#">Fred</a></li>
+
+							<li class="Label">J</li>
+							<li><a href="#">James</a></li>
+							<li><a href="#">Jefferson</a></li>
+							<li><a href="#">Jordan</a></li>
+
+							<li class="Label">K</li>
+							<li><a href="#">Kim</a></li>
+
+							<li class="Label">M</li>
+							<li><a href="#">Meagan</a></li>
+							<li><a href="#">Melissa</a></li>
+							
+							<li class="Label">N</li>
+							<li><a href="#">Nicole</a></li>
+
+							<li class="Label">S</li>
+							<li><a href="#">Samantha</a></li>
+							<li><a href="#">Scott</a></li>
+						</ul>
+					</li>
+					
+					<li>
+						<span>Family <i></i></span>
+						<ul>
+							<li class="Label">A</li>
+							<li><a href="#">Adam</a></li>
+
+							<li class="Label">B</li>
+							<li><a href="#">Ben</a></li>
+							<li><a href="#">Bruce</a></li>
+
+							<li class="Label">E</li>
+							<li><a href="#">Eddie</a></li>
+
+							<li class="Label">J</li>
+							<li><a href="#">Jack</a></li>
+							<li><a href="#">John</a></li>
+
+							<li class="Label">M</li>
+							<li><a href="#">Martina</a></li>
+							<li><a href="#">Matthew</a></li>
+
+							<li class="Label">O</li>
+							<li><a href="#">Olivia</a></li>
+							<li><a href="#">Owen</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<span>Work colleagues <i></i></span>
+						<ul>
+							<li class="Label">D</li>
+							<li><a href="#">David</a></li>
+							<li><a href="#">Dennis</a></li>
+							
+							<li class="Label">E</li>
+							<li><a href="#">Eliza</a></li>
+							
+							<li class="Label">L</li>
+							<li><a href="#">Larry</a></li>
+							<li><a href="#">Lisa</a></li>
+							
+							<li class="Label">M</li>
+							<li><a href="#">Michael</a></li>
+							
+							<li class="Label">R</li>
+							<li><a href="#">Rachelle</a></li>
+							<li><a href="#">Rick</a></li>
+						</ul>
+					</li>
+
+					<li class="no-results"><span>No results found.</span></li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>

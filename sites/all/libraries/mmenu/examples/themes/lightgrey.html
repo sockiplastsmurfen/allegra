@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+		<meta name="robots" content="noindex, nofollow" />
+
+		<title>jQuery.mmenu &raquo; Color themes</title>
+
+		<link type="text/css" rel="stylesheet" href="../examples.css" />
+		<link type="text/css" rel="stylesheet" href="../../mmenu.css" />
+		
+		<script type="text/javascript" language="javascript" src="../../jquery.js"></script>
+		<script type="text/javascript" src="../../jquery.mmenu.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+			});
+		</script>
+		
+		<style type="text/css">
+			html.mmenu-opened .mmenu-page
+			{
+				box-shadow: 0 0 20px rgba( 0, 0, 0, 0.4 );
+			}
+			.mmenu
+			{
+				background: #999;
+			}
+			.mmenu *
+			{
+				text-shadow: none;
+			}
+			.mmenu li
+			{
+				border-top-color: #aaa;
+				border-bottom-color: #777;
+				position: relative;
+			}
+			.mmenu li > a,
+			.mmenu li > span,
+			.mmenu li > a:hover
+			{
+				color: #eee;
+			}
+			.mmenu li.mmenu-selected > a,
+			.mmenu li.mmenu-selected > span
+			{
+				background: #888;
+			}
+			.mmenu a.mmenu-subopen
+			{
+				border-left: 1px solid #777;
+			}
+			.mmenu a.mmenu-subclose
+			{
+				background: #888;
+			}
+			.mmenu li.mmenu-label
+			{
+				background: #aaa;
+				color: #fff;
+			}
+			.mmenu a.mmenu-subopen:after,
+			.mmenu a.mmenu-subclose:before
+			{
+				border-color: rgba( 0, 0, 0, 0.2 );
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+				Lightgrey theme
+			</div>
+			<div id="content">
+				<p>The menu on this page uses a <strong>lightgrey</strong> theme.</p>
+				<p>This is a demo page.<br />
+					Click the menu-button in the header to open the menu.</p>
+			</div>
+			<nav id="menu">
+				<ul>
+					<li><a href="default.html">Default theme</a></li>
+					<li class="Selected"><a href="lightgrey.html">Lightgrey theme</a></li>
+					<li><a href="white.html">White theme</a></li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>
