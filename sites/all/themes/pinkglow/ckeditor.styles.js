@@ -13,6 +13,9 @@ if(typeof(CKEDITOR) !== 'undefined') {
   {name: 'Image Size 745px', element : 'img', styles: {'width': '745px'}},
   {name: 'Image Size 350px', element : 'img', styles: {'width': '350px'}},
   {name: 'Original Image', element : 'img', attributes : {'class': ''}},
-  {name: 'Color Plate Grey', element : 'div', attributes: {'class' : 'grey'}}
+  {name: 'Color Plate Grey', element : 'div', attributes: {'class' : 'grey'}},
+  
+  {name: 'Mail icon', element : 'div', attributes: {'class' : 'icon-mail'}},
+  {name: 'Phone icon', element : 'div', attributes: {'class' : 'icon-phone'}}
       ]);
   }

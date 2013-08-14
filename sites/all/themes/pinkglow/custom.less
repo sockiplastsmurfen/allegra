@@ -4,7 +4,24 @@
  * Sub theme for Simple Clean.
  */
 
+// Font-Awesome
+@import "font-awesome/variables.less";
+@import "font-awesome/mixins.less";
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('font/fontawesome-webfont.eot?v=@{FontAwesomeVersion}');
+  src: url('font/fontawesome-webfont.eot?#iefix&v=@{FontAwesomeVersion}') format('embedded-opentype'),
+    url('font/fontawesome-webfont.woff?v=@{FontAwesomeVersion}') format('woff'),
+    url('font/fontawesome-webfont.ttf?v=@{FontAwesomeVersion}') format('truetype'),
+    url('font/fontawesome-webfont.svg#fontawesomeregular?v=@{FontAwesomeVersion}') format('svg');
+//  src: url('@{FontAwesomePath}/FontAwesome.otf') format('opentype'); // used when developing fonts
+  font-weight: normal;
+  font-style: normal;
+}
+
 @promoColor: #e47297;
+@gray: #999;
 
 // Maintainance page
 .maintenance-page {
@@ -64,6 +81,9 @@ img, div, input, textarea {
   transition: background-color .3s ease, border .3s ease, color .3s ease, opacity .3s ease-in-out, outline .3s ease;
 }
 
+input:focus {
+  outline-color: @promoColor;
+}
 
 /**
  * Wrap
@@ -187,6 +207,7 @@ h3 {
 
 a {
   color: @promoColor;
+  font-weight: bold;
   text-decoration: none;
   -webkit-transition: background-color .3s ease, border .3s ease, color .3s ease, opacity .3s ease-in-out, outline .3s ease;
      -moz-transition: background-color .3s ease, border .3s ease, color .3s ease, opacity .3s ease-in-out, outline .3s ease;
@@ -217,6 +238,16 @@ a.button {
 a.button:hover{
   background-color: #232323;
   
+}
+
+.icon-mail:before {
+  .icon(@envelope-alt);
+  padding-right: 5px;
+}
+
+.icon-phone:before {
+  .icon(@phone);
+  padding-right: 5px;
 }
 
 /**
@@ -309,17 +340,20 @@ a.button:hover{
 }
 
 hr {
-  border: 0;
-  border-bottom: 5px solid @promoColor;
   clear: both;
-  margin: 0 auto 40px auto;
-  padding: 20px 0 0 0;
-  width: 260px;
+  margin: 20px auto 40px auto;
+  border: 0;
+  height: 3px;
+  background: @promoColor;
+  background-image: -webkit-linear-gradient(left, #fff, @promoColor, #fff); 
+  background-image:    -moz-linear-gradient(left, #fff, @promoColor, #fff); 
+  background-image:     -ms-linear-gradient(left, #fff, @promoColor, #fff); 
+  background-image:      -o-linear-gradient(left, #fff, @promoColor, #fff);
 }
 
 hr.extraspace {
   margin: 0 auto 60px auto;
-  padding: 50px 0 0 0;  
+  //padding: 50px 0 0 0;  
 }
 
 .view-nyheter {
@@ -368,11 +402,12 @@ footer .content {
 }
 
 footer a {
-  color: #fedaa5;
+  color: #fff;
+  font-weight: bold;
 }
 
 footer a:hover {
-  color: #ffffff;
+  color: #333333;//#fff;
 }
 
 .flexslider {
@@ -412,7 +447,7 @@ footer a:hover {
 }
 
 .flex-control-paging li a:hover {
-  background: #999;
+  background: #333;
 }
 
 /**
@@ -564,7 +599,7 @@ footer a:hover {
 
 .webform-client-form .form-submit,
 #content #edit-submit {
-  background-color: #aa5c00;
+  background-color: @promoColor;
   border: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -573,7 +608,6 @@ footer a:hover {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   height: 50px;
-  margin-left: 50px;
   text-transform: uppercase;
   width: 260px;
 }
