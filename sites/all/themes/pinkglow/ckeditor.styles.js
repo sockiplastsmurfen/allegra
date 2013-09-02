@@ -13,9 +13,16 @@ if(typeof(CKEDITOR) !== 'undefined') {
   {name: 'Image Size 745px', element : 'img', styles: {'width': '745px'}},
   {name: 'Image Size 350px', element : 'img', styles: {'width': '350px'}},
   {name: 'Original Image', element : 'img', attributes : {'class': ''}},
-  {name: 'Color Plate Grey', element : 'div', attributes: {'class' : 'grey'}},
+  {name: 'Color Plate Pink', element : 'div', attributes: {'class' : 'plate-pink'}},
   
-  {name: 'Mail icon', element : 'div', attributes: {'class' : 'icon-mail'}},
-  {name: 'Phone icon', element : 'div', attributes: {'class' : 'icon-phone'}}
+  {name: 'Phone icon', element : 'div', attributes: {'class' : 'icon-phone'}},
+  
+  {name: 'Mail link', element : 'a', attributes: {'class' : 'icon-mail'}},
+  {name: 'Facebook link', element : 'a', attributes: {'class' : 'icon-facebook'}},
+  {name: 'Instagram link', element : 'a', attributes: {'class' : 'icon-instagram'}},
+  {name: 'Twitter link', element : 'a', attributes: {'class' : 'icon-twitter'}},
+  {name: 'Pinterest link', element : 'a', attributes: {'class' : 'icon-pinterest'}},
+  {name: 'Google+ link', element : 'a', attributes: {'class' : 'icon-google-plus'}},
+  {name: 'Linkedin link', element : 'a', attributes: {'class' : 'icon-linkedin'}}
       ]);
   }
