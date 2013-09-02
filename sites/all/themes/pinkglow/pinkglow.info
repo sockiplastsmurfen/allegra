@@ -7,6 +7,9 @@ base theme = simpleclean
 ; STYLESHEETS
 stylesheets[all][] = custom.css
 
+; JS
+scripts[] = js/pinkglow.js
+
 ; REGIONS
 regions[content] = Content
 regions[header] = Header

@@ -123,6 +123,7 @@ input:focus {
  
 #logo {
   float: none;
+  min-height: 242px;
 }
 
 #logo a {
@@ -168,7 +169,7 @@ h1,
   text-align: center;
 }
 
-.node-referens img:nth-of-type(1) {
+#block-views-referenser-block .node-referens img:nth-of-type(1) {
   margin-top: 50px;
 }
 
@@ -374,9 +375,51 @@ hr.extraspace {
   font-size: 13px;
 }
 
-.node-type-referens #content-wrap img {
-  width: 100%;
-  height: auto;
+.node-type-referens #content-wrap .field-name-field-bild {
+  margin-top: 50px;
+
+  .field-item {
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 1%;
+      clear: left;
+    }
+
+    &.field-item-1,
+    &.field-item-2,
+    &.field-item-4,
+    &.field-item-5,
+    &.field-item-7,
+    &.field-item-8,
+    &.field-item-10,
+    &.field-item-11,
+    &.field-item-13,
+    &.field-item-14,
+    &.field-item-16,
+    &.field-item-17, {
+
+      img {
+        width: 49.5%;
+        float: left;
+        clear: none;
+      }
+    }
+
+    &.field-item-1,
+    &.field-item-4,
+    &.field-item-7,
+    &.field-item-10,
+    &.field-item-13,
+    &.field-item-16 {
+
+      img {
+        margin-right: 1%;
+      }
+    }
+  }
 }
 
 /**
@@ -850,9 +893,13 @@ input, textarea, select {
     padding: 30px 20px 0 20px;
   }
   
-  #logo a {
-    margin: 0 auto 20px;
-    width: 200px;
+  #logo { 
+    min-height: 159px;
+
+    a {
+      margin: 0 auto 20px;
+      width: 200px;
+    }
   }
   
   #logo a img,
