@@ -15,9 +15,9 @@ if(typeof(CKEDITOR) !== 'undefined') {
   {name: 'Original Image', element : 'img', attributes : {'class': ''}},
   {name: 'Color Plate Pink', element : 'div', attributes: {'class' : 'plate-pink'}},
   
-  {name: 'Phone icon', element : 'div', attributes: {'class' : 'icon-phone'}},
+  {name: 'Phone icon', element : 'span', attributes: {'class' : 'icon-phone'}},
   
-  {name: 'Mail link', element : 'a', attributes: {'class' : 'icon-mail'}},
+  {name: 'Mail link', element : 'span', attributes: {'class' : 'icon-mail'}},
   {name: 'Facebook link', element : 'a', attributes: {'class' : 'icon-facebook'}},
   {name: 'Instagram link', element : 'a', attributes: {'class' : 'icon-instagram'}},
   {name: 'Twitter link', element : 'a', attributes: {'class' : 'icon-twitter'}},
