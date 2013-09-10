@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ */
+function link_autocomplete_menu() {
+  $items['link/autocomplete'] = array(
+    'title' => 'Link autocomplete',
+    'page callback' => 'link_autocomplete_callback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * provides a json object for autocompleting internal links
+ * search based on node title
+ */
+function link_autocomplete_callback($string = '') {
+  $matches = array();
+  if ($string) {
+    $result = db_select('node')->fields('node', array('nid', 'title'))->condition('title', db_like($string) . '%', 'LIKE')->range(0, 10)->execute();
+    foreach ($result as $node) {
+      $matches[$node->nid] = array('title'=>check_plain($node->title), 'display'=>check_plain($node->title) . ' (node/' . $node->nid . ')');
+    }
+  }
+  drupal_json_output($matches);
+}
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ * TODO: implement autocomplete link as its own widget (?)
+ */
+/*
+function link_autocomplete_field_widget_info() {
+  return array(
+    'link_field_internal' => array(
+      'label' => 'Link (Internal)',
+      'field types' => array('link_field'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+// */
+
+/**
+ * Implements hook_element_info_alter()
+ */
+function link_autocomplete_element_info_alter(&$type) {
+  if (isset($type['link_field']['#process'])) {
+    $type['link_field']['#process'][] = 'link_autocomplete_widget_process';
+  }
+}
+
+function link_autocomplete_widget_process($element, $form_state, $complete_form) {
+  $element['title']['#autocomplete_path'] = 'link/autocomplete';
+  $element['title']['#attached']['js'] = array(
+    drupal_get_path('module', 'link_autocomplete') . '/js/link-autocomplete.js' => array(
+    'type' => 'file',
+    'weight' => '99',
+    ),
+  );
+  $element['title']['#attributes'] = array('class' => array('link-autocomplete'));
+  
+  return $element;
+}

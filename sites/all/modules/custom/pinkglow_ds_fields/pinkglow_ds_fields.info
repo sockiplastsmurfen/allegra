@@ -1,0 +1,5 @@
+name = Pinkglow display suite fields
+description = Adds custom display suite fields
+core = 7.x
+files[] = pinkglow_ds_fields.module
+package = Pink Glow
