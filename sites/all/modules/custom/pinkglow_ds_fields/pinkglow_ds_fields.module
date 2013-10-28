@@ -21,6 +21,13 @@ function pinkglow_ds_fields_ds_fields_info($entity_type) {
         'ui_limit' => array('puff|*'),
         'function' => 'pinkglow_ds_fields_linked_headline',
       );
+      
+      $fields['pinkglow_ds_fields_comment_link'] = array(
+        'title' => 'Link to comments',
+        'field_type' => DS_FIELD_TYPE_FUNCTION,
+        'ui_limit' => array('article|*'),
+        'function' => 'pinkglow_ds_fields_comment_link',
+      );
 
       break;
   }
@@ -50,4 +57,13 @@ function pinkglow_ds_fields_linked_headline($context) {
   else {
     return '<h2>' . $node->title . '</h2>';
   }
+}
+
+function pinkglow_ds_fields_comment_link($context) {
+  
+  $node = $context['entity'];
+  
+  $path = '/node/'. $node->nid .'#disqus_thread';
+  
+  return '<a href="'. $path .'" class="comment-link">Skriv kommentar</a>';
 }
