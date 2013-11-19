@@ -671,6 +671,10 @@ div.two-columns .col2 {
 #mmenu-menu ul.menu li {
   margin: 0;
 }
+#content .content img {
+  max-width: 100% !important;
+  height: auto;
+}
 /**
  * Responsive
  */

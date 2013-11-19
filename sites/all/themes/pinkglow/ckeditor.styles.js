@@ -8,6 +8,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
   {name: 'Button Link', element: 'a', attributes: {'class': 'button'}},
   {name: 'No icon', element: 'a', attributes: {'class': 'nolink'}},
   {name: 'Standard Link', element: 'a', attributes: {'class': ''}},
+  {name: 'Adaptive Image', element : 'img', attributes: {'class' : 'adaptive'}},
   {name: 'Right Aligned Image', element : 'img', attributes: {'class' : 'img-align-right'}},
   {name: 'Left Aligned Image', element : 'img', attributes: {'class' : 'img-align-left'}},
   {name: 'Image Size 745px', element : 'img', styles: {'width': '745px'}},
