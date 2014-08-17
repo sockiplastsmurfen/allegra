@@ -118,8 +118,8 @@ strong {
 }
 h1,
 #highlighted h1 {
-  font-size: 44px;
-  line-height: 44px;
+  font-size: 30px;
+  line-height: 30px;
   margin-top: 20px;
 }
 #highlighted h1 {
@@ -403,43 +403,23 @@ hr.extraspace {
   margin-top: 50px;
 }
 .node-type-referens #content-wrap .field-name-field-bild .field-item img {
-  width: 100%;
+  width: 49.5%;
+  float: left;
   height: auto;
   display: block;
   margin-bottom: 1%;
-  clear: left;
 }
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-1 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-2 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-4 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-5 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-7 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-8 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-10 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-11 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-13 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-14 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-16 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-17 img {
-  width: 49.5%;
-  float: left;
-  clear: none;
-}
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-1 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-4 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-7 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-10 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-13 img,
-.node-type-referens #content-wrap .field-name-field-bild .field-item.field-item-16 img {
+.node-type-referens #content-wrap .field-name-field-bild .field-item.even img {
   margin-right: 1%;
+  clear: left;
 }
 /**
  * Navigation
  */
 #footer-wrap {
-  background-color: #e47297;
+  background-color: #ffeeee;
   border-top: none;
-  color: white;
+  color: #999999;
   font-style: normal;
   margin: 30px auto -60px auto;
   padding: 0 0 20px 0;
@@ -453,7 +433,7 @@ footer .content {
   text-align: center;
 }
 footer a {
-  color: #fff;
+  color: #999999;
   font-weight: bold;
 }
 footer a:hover {
