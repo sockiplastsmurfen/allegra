@@ -10,6 +10,11 @@
   * Override or insert variables into the html template.
   */
 function simpleclean_preprocess_html(&$vars) {
+  // Ensure that the $vars['rdf'] variable is an object.
+  if (!isset($vars['rdf']) || !is_object($vars['rdf'])) {
+    $vars['rdf'] = new StdClass();
+  }
+
   // Uses RDFa attributes if the RDF module is enabled.
   if (module_exists('rdf')) {
     $vars['doctype'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">' . "\n";
@@ -54,19 +59,6 @@ function simpleclean_html_head_alter(&$head_elements) {
   
   // Remove Drupal 7 generator tag.
   // unset($head_elements['system_meta_generator']);
-
-  // Remove Drupal 7 generator, canonical and shortlink tags
-  $remove = array(
-     'system_meta_generator',
-     'metatag_canonical',
-     'metatag_shortlink'
-  );
-
-  foreach ($remove as $key) {
-    if (isset($head_elements[$key])) {
-      unset($head_elements[$key]);
-    }
-  }
 }
 
 /**
@@ -94,6 +86,7 @@ function simpleclean_form_alter(&$form, &$form_state, $form_id) {
 function simpleclean_process_html(&$vars) {
   $before = array(
     "/\s\/>/",
+    "/\s\/\s>/",
     "/>\s\s+/",
     "/\s\s+</",
     "/>\t+</",
@@ -101,7 +94,7 @@ function simpleclean_process_html(&$vars) {
     "/(?<=\w)\s\s+/"
   );
 
-  $after = array('>', '> ', ' <', '> <', ' ', ' ');
+  $after = array('>', '>', '> ', ' <', '> <', ' ', ' ');
 
   // Head.
   $head = $vars['head'];
@@ -257,50 +250,4 @@ function simpleclean_js_alter(&$js) {
 
   // Merge the array for one js file.
   $js = array_merge($js);
-}
-
-/**
-* Change tabs to contextual links for nodes
-*
-* NOTE: Add to node.tpl.php
-* if ($page && isset($title_suffix['contextual_links'])) print render($title_suffix['contextual_links']); ?>
-*
-*/
-
-/**
- * Implementation of hook_node_view_alter().
- */
-function simpleclean_node_view_alter(&$build) {
-  // allow contextual links on node pages
-  $build['#contextual_links']['node'] = array('node', array($build['#node']->nid));
-}
-
-/*
- * Implementation of hook_menu_contextual_links_alter().
- * Adding items from the local tasks tabs menu to the contextual links on node full view.
- */
-function simpleclean_menu_contextual_links_alter(&$links, $router_item, $root_path) {
-  if ($root_path == 'node/%') {
-    $ignore = array('node/%/view','node/%/display');
-    $paths = array();
-    foreach ($links as $link) {
-      $paths[$link['path']] = true;
-    }   
-
-    $local_tasks = menu_local_tasks();
-    foreach($local_tasks['tabs']['output'] as $k=>$item) {
-      $link = $item['#link'];
-      if (!in_array($link['path'], $ignore) && !array_key_exists($link['path'],$paths)){
-        array_push($links, $link);
-        $paths[$link['path']] = true;
-      }   
-    }   
-  }
-}
-
-/**
- * Implementation of hook_preprocess_hook().
- */
-function simpleclean_preprocess_page(&$variables) {
-  $variables['tabs'] = array();
 }

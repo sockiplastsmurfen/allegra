@@ -10,9 +10,6 @@
  */
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php 
-  // Needed for change tabs to contextual links for nodes
-  if ($page && isset($title_suffix['contextual_links'])) print render($title_suffix['contextual_links']); ?>
 
   <?php if (!$page || $display_submitted): ?>
     <header>

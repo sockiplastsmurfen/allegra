@@ -14,17 +14,17 @@
  */
 ?>
 <div id="wrap">
-  <header id="header" role="banner">
+  <header id="header" class="clearfix" role="banner">
     <?php if ($page['header']): ?>
     <?php print render($page['header']); ?>
     <?php endif; ?>
     
     <div id="logo" class="clearfix">
       <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>"><img src="<?php print $logo; ?>" alt="<?php print implode(' - ', array($site_name, $site_slogan)); ?>" /></a>
+      <a href="<?php print $front_page; ?>"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
       <?php else: ?>
         <?php if ($site_name): ?>
-        <h1 id="logo-text"><a href="<?php print $front_page; ?>" title="<?php print implode(' - ', array($site_name, $site_slogan)); ?>"><?php print $site_name; ?></a></h1>
+        <h1 id="logo-text"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></h1>
         <?php endif; ?>
       <?php endif; ?>
       <?php if ($site_slogan): ?>

@@ -177,6 +177,10 @@ h3 {
   margin: 32px 0 16px 0;
 }
 
+h2:first-child {
+  margin-top: 0;
+}
+
 h2 a {
   color: #242021;
   text-decoration: none;
@@ -387,9 +391,13 @@ h2 a {
  * Main content
  */
 
-#content{
+#content {
   float: left;
   width: 610px;
+}
+
+#content-wrap {
+  width: 100%;
 }
 
 #content fieldset {
@@ -719,8 +727,9 @@ a.feed-icon {
 #content ul.pager li a {
   background: #EEEEEE;
   color: #242021;
-  margin: 0 6px 0 0;
-  padding: 10px 14px;
+  font-family: "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 6px 10px;
   text-decoration: none;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -733,8 +742,9 @@ a.feed-icon {
 
 #content ul.pager li.pager-current {
   background: #F6F6F6;
-  margin: 0 6px 0 0;
-  padding: 10px 14px;
+  font-family: "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 6px 10px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px 4px 4px 4px;
@@ -959,10 +969,6 @@ body #admin-menu li.admin-menu-icon {
  * Extra
  */
 
-.clear {
-  clear: both;
-}
-
 .form-required {
   color: #888888;
 }
@@ -980,4 +986,8 @@ hr {
   border-top: 3px solid #DDDDDD;
   height: 3px;
   margin: 20px 0;
+}
+
+body.toolbar {
+  padding-top: 65px;
 }
